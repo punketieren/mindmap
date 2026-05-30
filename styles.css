@@ -303,7 +303,8 @@ body {
 font-family: 'IntroHeadB';
 color: #FF6E4A; 
 }
-.ProseMirror h3 { font-size: 1.8em; margin: 0.5em 0; }
+.ProseMirror h3 { font-size: 1.8em; margin: 0.5em 0; color: white; 
+   background: #4293FF;}
 .ProseMirror h4 { font-size: 1.2em; margin: 0.5em 0; }
 .ProseMirror h5 { font-size: 0.8em; margin: 0.5em 0; color: #555; }
 .ProseMirror h6 { font-size: 0.5em; margin: 0.5em 0; color: #777; }
