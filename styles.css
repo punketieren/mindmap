@@ -5,17 +5,17 @@
 }
 @font-face {
   font-family: 'Angst';
-  src: url('font/angstVF.woff') format('woff'),
-       url('font/angstVF.ttf') format('truetype'); /* Запасной вариант для старых браузеров */
+  src: url('mindmap/font/angstVF.woff') format('woff'),
+       url('mindmap/font/angstVF.ttf') format('truetype'); /* Запасной вариант для старых браузеров */
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'IntroHeadB';
-src: url('font/IntroHeadB.woff2') format('woff2'),
-       url('font/IntroHeadB.woff') format('woff'),
-       url('font/IntroHeadB.ttf') format('truetype');  
+src: url('mindmap/font/IntroHeadB.woff2') format('woff2'),
+       url('mindmap/font/IntroHeadB.woff') format('woff'),
+       url('mindmap/font/IntroHeadB.ttf') format('truetype');  
 	     font-weight: normal;
   font-style: normal;
   font-display: swap;
