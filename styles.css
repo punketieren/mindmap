@@ -293,7 +293,7 @@ body {
     line-height: 1.5;
 }
 
-.ProseMirror h1 { font-size: 2.8em; margin: 1em 1em;  
+.ProseMirror h1 { font-size: 2.8em; margin: 1em 0.5em;  
    color: #f1f5f9; 
    background: #FF6E4A;
   font-family: 'Angst'; 
