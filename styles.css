@@ -296,7 +296,7 @@ body {
 .ProseMirror h1 { font-size: 3em; margin: 0.5em 0;  
   
   /* Изменение цвета текста */
-  color: brown; 
+  color: #C76E00; 
   
   /* Изменение шрифта */
   font-family: 'Angst'; 
@@ -305,7 +305,7 @@ body {
   -webkit-text-stroke: 1px #000000;}
 .ProseMirror h2 { font-size: 2em; margin: 0.5em 0; 
 font-family: 'IntroHeadB';
-color: gray; 
+color: #C76E00; 
 -webkit-text-stroke: 1px #000000;
 }
 .ProseMirror h3 { font-size: 1.5em; margin: 0.5em 0; }
