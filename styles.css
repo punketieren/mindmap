@@ -324,9 +324,9 @@ color: #FF6E4A;
 font-family: 'Forum'; 
 color: #4293FF;
 }
-.ProseMirror h4 { font-size: 1.2em; margin: 0.5em 0; }
-.ProseMirror h5 { font-size: 0.8em; margin: 0.5em 0; color: #555; }
-.ProseMirror h6 { font-size: 0.5em; margin: 0.5em 0; color: #777; }
+.ProseMirror h4 { font-size: 1.4em; margin: 0.5em 0; }
+.ProseMirror h5 { font-size: 1em; margin: 0.5em 0; color: #555; }
+.ProseMirror h6 { font-size: 1em; margin: 0.5em 0; color: #777; }
 .ProseMirror ul, .ProseMirror ol { padding-left: 2em; margin: 0.5em 0; }
 .ProseMirror blockquote { border-left: 4px solid #3b82f6; padding-left: 1em; color: #555; margin: 0.5em 0; }
 .ProseMirror code { background: #f1f5f9; padding: 2px 4px; border-radius: 4px; font-family: monospace; }
