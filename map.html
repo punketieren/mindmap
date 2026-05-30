@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #markmap-container { width: 100vw; height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="markmap-container"></div>
+
+    <script>
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+
+        (async function() {
+            try {
+                await loadScript('d3.js');
+                await loadScript('markmap-lib.js');
+                await loadScript('markmap-view.js');
+
+                const container = document.getElementById('markmap-container');
+                const transformer = new window.markmap.Transformer();
+                
+                // Глобальные переменные для управления извне
+                window.currentMap = null;
+                window.currentSvg = null;
+                window.currentMarkdown = '';
+
+ async function render(markdownText) {
+    if (!container) return;
+    
+    // Сохраняем защиту от сброса карты при холостых кликах курсора
+    if (window.currentMarkdown === markdownText) {
+        return; 
+    }
+    
+    window.currentMarkdown = markdownText;
+
+    // 1. Извлекаем и структуру дерева (root), и объект настроек (frontmatter)
+    const { root, frontmatter } = transformer.transform(markdownText || '# Пустой документ\n## Нет данных');
+
+    // Вытаскиваем параметры markmap из фронтматтера, если они там есть
+    let options = frontmatter && frontmatter.markmap ? frontmatter.markmap : null;
+
+    // 👇 ВОТ ЭТОТ БЛОК ИСПРАВЛЯЕТ ОШИБКУ "n is not a function":
+    // Превращаем массив строк с цветами в функцию, которую требует markmap-view
+    if (options && Array.isArray(options.color)) {
+        const colors = options.color;
+        options.color = function(node) {
+            return colors[node.depth % colors.length] || '#888888';
+        };
+    }
+
+    if (window.currentMap && window.currentSvg && window.currentSvg.parentNode === container) {
+        // 2. Если карта уже создана, обновляем её настройки динамически, а затем данные
+        if (options) {
+            window.currentMap.setOptions(options);
+        } else {
+            // Сбрасываем на дефолтные опции, если блок настроек удалили из редактора
+            window.currentMap.setOptions(window.markmap.deriveOptions(null));
+        }
+        window.currentMap.setData(root);
+    } else {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.style.width = '100%';
+        svg.style.height = '100%';
+        svg.style.display = 'block';
+
+        container.innerHTML = '';
+        container.appendChild(svg);
+        window.currentSvg = svg;
+        
+        // 3. При первой отрисовке передаем валидные опции вторым аргументом
+        window.currentMap = window.markmap.Markmap.create(svg, options, root);
+    }
+}
+
+
+                window.updateMarkmap = render;
+
+                // Сворачивание узлов глубже определённого уровня
+                window.collapseLevel = function(level) {
+                    if (!window.currentMap || !window.currentMap.state || !window.currentMap.state.data) return;
+                    
+                    const root = window.currentMap.state.data;
+                    
+                    function setFold(node, currentDepth = 1) {
+                        if (!node) return;
+                        if (node.children && node.children.length) {
+                            node.payload = node.payload || {};
+                            // fold: 1 — свёрнут, 0 — развёрнут
+                            node.payload.fold = (currentDepth >= level) ? 1 : 0;
+                            node.children.forEach(child => setFold(child, currentDepth + 1));
+                        }
+                    }
+                    
+                    setFold(root);
+                    window.currentMap.setData(root);
+                };
+
+                // Разворачивание всех узлов
+                window.expandAll = function() {
+                    if (!window.currentMap || !window.currentMap.state || !window.currentMap.state.data) return;
+                    
+                    const root = window.currentMap.state.data;
+                    
+                    function unfold(node) {
+                        if (!node) return;
+                        if (node.children && node.children.length) {
+                            node.payload = node.payload || {};
+                            node.payload.fold = 0;
+                            node.children.forEach(unfold);
+                        }
+                    }
+                    
+                    unfold(root);
+                    window.currentMap.setData(root);
+                };
+// После определения функции collapseLevel, добавить отправку уровня
+window.collapseLevel = function(level) {
+    if (!window.currentMap || !window.currentMap.state || !window.currentMap.state.data) return;
+    
+    const root = window.currentMap.state.data;
+    
+    function setFold(node, currentDepth = 1) {
+        if (!node) return;
+        if (node.children && node.children.length) {
+            node.payload = node.payload || {};
+            node.payload.fold = (currentDepth >= level) ? 1 : 0;
+            node.children.forEach(child => setFold(child, currentDepth + 1));
+        }
+    }
+    
+    setFold(root);
+    window.currentMap.setData(root);
+    
+    // Отправляем уровень в родительское окно
+    window.parent.postMessage({ type: 'levelChanged', level: level }, '*');
+};
+                // Сигнал родительскому окну, что карта готова
+                window.parent.postMessage({ type: 'mapReady' }, '*');
+
+                // Стартовая отрисовка
+                await render('# Загру\n## зка...\n## Карта\n### гот\n### ова');
+            } catch (err) {
+                console.error(err);
+                document.body.innerHTML = `<div style="color:red;padding:20px;">Ошибка: ${err.message}</div>`;
+            }
+        })();
+    </script>
+	<script>
+    // Обработчик сообщений от родительского окна
+    window.addEventListener('message', (e) => {
+        if (e.data.type === 'updateMap' && window.updateMarkmap) {
+            window.updateMarkmap(e.data.markdown);
+        }
+    });
+// После генерации Markmap
+document.querySelectorAll('a').forEach(link => {
+    link.setAttribute('target', '_blank');
+});
+    function saveAsPNG() {
+    const svg = document.querySelector('#markmap-container svg');
+    if (!svg) return;
+
+    const clone = svg.cloneNode(true);
+    const container = document.getElementById('markmap-container');
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    
+    clone.setAttribute('width', width);
+    clone.setAttribute('height', height);
+    
+    const transform = svg.getAttribute('transform') || '';
+    clone.setAttribute('transform', transform);
+    
+    const serializer = new XMLSerializer();
+    const source = serializer.serializeToString(clone);
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    
+    const img = new Image();
+    img.onload = () => {
+        ctx.drawImage(img, 0, 0, width, height);
+        const png = canvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = png;
+        a.download = 'mindmap.png';
+        a.click();
+    };
+    img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(source);
+}
+
+window.saveAsPNG = saveAsPNG;
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>WYSIWYG Markdown mindmap</title>
+    <link rel="stylesheet" href="styles.css">
+	 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prosemirror-view@1.31.0/style/prosemirror.css">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+<div class="container">
+    <div class="editor-panel" id="editor-panel">
+        <div class="panel-content">
+            <div class="editor-toolbar">
+                <span id="heading-level">-</span>
+                <div class="heading-stack">
+                    <button id="heading-up"><img src="img/heading-up.svg" alt="▲"></button>
+                    <button id="heading-down"><img src="img/heading-down.svg" alt="▼"></button>
+                </div>
+                <button id="undo"><img src="img/undo.svg" alt="↩️"></button>
+                <button id="redo"><img src="img/redo.svg" alt="↪️"></button>
+                <button id="ul"><img src="img/ul.svg" alt="•"></button>
+               <button id="ol"><img src="img/ol.svg" alt="1."></button>
+                <button id="quote"><img src="img/quote.svg" alt='"'> </button>
+                <button id="code-block"><img src="img/code-block.svg" alt="{ }"></button>
+                <button id="strike"><img src="img/strike.svg" alt="S"></button>
+                    <div  id="bubble-menu" >
+                        <button id="bold"><img src="img/bold.svg" alt="B"></button>
+                        <button id="italic"><img src="img/italic.svg" alt="I"></button>
+                        <button id="code-inline"><img src="img/code-inline.svg" alt="<>"></button>
+                        <button id="highlight"><img src="img/highlight.svg" alt="H"></button>
+                    </div>
+                <div class="dropdown">
+                    <button><img src="img/menu-dots.svg" alt="⋯"></button>
+                    <div class="dropdown-content">
+                        <button id="link"><img src="img/link.svg" alt="🔗"></button>
+                        <button id="hr"><img src="img/hr.svg" alt="—"></button>
+                        <button id="save-btn"><img src="img/save.svg" alt="💾"></button>
+                        <button id="load-btn"><img src="img/load.svg" alt="📂"></button>
+                    </div>
+                </div>
+            </div>
+            <div id="editor"></div>
+            <div class="editor-status-bar">
+                <div class="mode-switch">
+                    <label> <img src="img/type.svg" alt="WYSIWYG"><input type="radio" name="editor-mode" value="wysiwyg" checked></label>|
+                    <label><input type="radio" name="editor-mode" value="markdown"> <img src="img/md.svg" alt="Markdown"></label>
+                </div>
+                <div class="editor-inline-status" id="editor-inline-status"></div>
+</div></div></div>
+    <div class="resizer" id="resizer"><button class="toggle-resizer-btn" id="toggleResizerBtn" title="ресайзер"><img src="img/grip.svg" alt=""></button></div>
+    <div class="viewer-panel" id="viewer-panel">
+        <div id="markmap-container">
+		<iframe id="mapFrame" src="map.html"><!-- style="width:100%; height:100%; border:none; min-height: 300px;"--></iframe>
+		</div>
+        <div class="map-toolbar">
+            <button id="fit-btn" title="Подогнать карту"><img src="img/fit.svg" alt=""></button>
+            <button id="fullscreen-map" title="Полный экран"><img src="img/fullscreen.svg" alt=""></button>
+            <button id="save-png" title="Сохранить как PNG"><img src="img/save-png.svg" alt=""></button><span id="map-level" >6</span>
+        <div class="collapse-stack">
+				<button id="expand" title="Развернуть"><img src="img/expand.svg" alt=""></button>
+            <button id="collapse" title="Свернуть"><img src="img/collapse.svg" alt=""></button>
+</div></div></div></div>
+<div class="global-status" id="global-status">Готов</div>
+<script src="prosemirror.bundle.js"></script>  
+<script src="init-prosemirror.js"></script> 	
+<script  src="view.js"></script>
+</body>
+</html>
