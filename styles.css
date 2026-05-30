@@ -305,27 +305,27 @@ body {
     overflow-y: auto;
     padding: 20px;
     outline: none;
-    font-size: 1.4em;
+    font-size: 1.2em;
     line-height: 1.5;
   font-family: 'PoiretOne';
 
 }
 
-.ProseMirror h1 { font-size: 2.8em; margin: 0.7em 0;  
+.ProseMirror h1 { font-size: 2.6em; margin: 0.7em 0;  
    color: #f1f5f9; 
    background: #FF6E4A;
   font-family: 'Angst'; 
 }
   
-.ProseMirror h2 { font-size: 2.4em; margin: 0.5em 0.3em; 
+.ProseMirror h2 { font-size: 2.2em; margin: 0.5em 0.3em; 
 font-family: 'IntroHeadB';
 color: #FF6E4A; 
 }
-.ProseMirror h3 { font-size: 1.8em; margin: 0.5em 0.6em; 
+.ProseMirror h3 { font-size: 1.6em; margin: 0.5em 0.6em; 
 font-family: 'Forum'; 
 color: #4293FF;
 }
-.ProseMirror h4 { font-size: 1.4em; margin: 0.5em 0.9em; }
+.ProseMirror h4 { font-size: 1.3em; margin: 0.5em 0.9em; }
 .ProseMirror h5 { font-size: 1em; margin: 0.5em 1.6em; color: #555; }
 .ProseMirror h6 { font-size: 1em; margin: 0.5em 1.6em; color: #777; }
 .ProseMirror ul, .ProseMirror ol { padding-left: 2em; margin: 0.5em 0; }
