@@ -293,20 +293,20 @@ body {
     line-height: 1.5;
 }
 
-.ProseMirror h1 { font-size: 3em; margin: 0.5em 0;  
-   color: #FF6E4A; 
-   background: #f1f5f9;
+.ProseMirror h1 { font-size: 2.8em; margin: 0.5em 0;  
+   color: #f1f5f9; 
+   background: #FF6E4A;
   font-family: 'Angst'; 
 }
   
-.ProseMirror h2 { font-size: 2em; margin: 0.5em 0; 
+.ProseMirror h2 { font-size: 2.2em; margin: 0.5em 0; 
 font-family: 'IntroHeadB';
-color: #C76E00; 
+color: #FF6E4A; 
 }
-.ProseMirror h3 { font-size: 1.5em; margin: 0.5em 0; }
-.ProseMirror h4 { font-size: 1em; margin: 0.5em 0; }
-.ProseMirror h5 { font-size: 0.5em; margin: 0.5em 0; color: #555; }
-.ProseMirror h6 { font-size: 0.2em; margin: 0.5em 0; color: #777; }
+.ProseMirror h3 { font-size: 1.8em; margin: 0.5em 0; }
+.ProseMirror h4 { font-size: 1.2em; margin: 0.5em 0; }
+.ProseMirror h5 { font-size: 0.8em; margin: 0.5em 0; color: #555; }
+.ProseMirror h6 { font-size: 0.5em; margin: 0.5em 0; color: #777; }
 .ProseMirror ul, .ProseMirror ol { padding-left: 2em; margin: 0.5em 0; }
 .ProseMirror blockquote { border-left: 4px solid #3b82f6; padding-left: 1em; color: #555; margin: 0.5em 0; }
 .ProseMirror code { background: #f1f5f9; padding: 2px 4px; border-radius: 4px; font-family: monospace; }
