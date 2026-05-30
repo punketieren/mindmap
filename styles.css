@@ -305,9 +305,12 @@ body {
     overflow-y: auto;
     padding: 20px;
     outline: none;
-    font-size: 20px;
+    font-size: 1em;
     line-height: 1.5;
   font-family: 'PoiretOne';
+  -webkit-text-stroke: 0.5px #333333; /* Для современных браузеров */
+  paint-order: stroke fill;          /* Чтобы обводка не съедала внутренность букв */
+
 }
 
 .ProseMirror h1 { font-size: 2.8em; margin: 0.7em 0;  
