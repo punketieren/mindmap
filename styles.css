@@ -291,18 +291,13 @@ body {
     outline: none;
     font-size: 16px;
     line-height: 1.5;
-}*/
+}
 
 .ProseMirror h1 { font-size: 3em; margin: 0.5em 0;  
-  
-  /* Изменение цвета текста */
-  color: #C76E00; 
-  
-  /* Изменение шрифта */
+   color: #C76E00; 
   font-family: 'Angst'; 
-  
-  /* Добавление обводки текста */
   -webkit-text-stroke: 1px #000000;}
+  
 .ProseMirror h2 { font-size: 2em; margin: 0.5em 0; 
 font-family: 'IntroHeadB';
 color: #C76E00; 
