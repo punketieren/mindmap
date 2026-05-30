@@ -5,8 +5,8 @@
 }
 @font-face {
   font-family: 'Angst';
-  src: url('font/angstVF.woff') format('woff'),
-       url('font/angstVF.ttf') format('truetype'); /* Запасной вариант для старых браузеров */
+  src: url('font/AngstVF.woff') format('woff'),
+       url('font/AngstVF.ttf') format('truetype'); /* Запасной вариант для старых браузеров */
   font-weight: normal;
   font-style: normal;
   font-display: swap;
