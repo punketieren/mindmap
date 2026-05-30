@@ -11,6 +11,15 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'IntroHeadB';
+src: url('font/IntroHeadB.woff2') format('woff2'),
+       url('font/IntroHeadB.woff') format('woff'),
+       url('font/IntroHeadB.ttf') format('truetype');  
+	     font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 body {
     background: #959595;
     font-family: system-ui, sans-serif;
@@ -294,7 +303,11 @@ body {
   
   /* Добавление обводки текста */
   -webkit-text-stroke: 2px #000000;}
-.ProseMirror h2 { font-size: 1.5em; margin: 0.5em 0; }
+.ProseMirror h2 { font-size: 1.5em; margin: 0.5em 0; 
+font-family: 'IntroHeadB';
+color: gray; 
+-webkit-text-stroke: 2px #000000;
+}
 .ProseMirror h3 { font-size: 1.25em; margin: 0.5em 0; }
 .ProseMirror h4 { font-size: 1.1em; margin: 0.5em 0; }
 .ProseMirror h5 { font-size: 1em; margin: 0.5em 0; color: #555; }
