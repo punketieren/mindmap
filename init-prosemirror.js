@@ -38,7 +38,7 @@
     }
     
     try {
-        const response = await fetch('/printery/mindmap/to-do.md');
+        const response = await fetch('/mindmap/to-do.md');
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}`);
         }
