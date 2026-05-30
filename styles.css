@@ -294,14 +294,14 @@ body {
 }
 
 .ProseMirror h1 { font-size: 3em; margin: 0.5em 0;  
-   color: #C76E00; 
+   color: #FF6E4A; 
+   background: #f1f5f9;
   font-family: 'Angst'; 
-  -webkit-text-stroke: 1px #000000;}
+}
   
 .ProseMirror h2 { font-size: 2em; margin: 0.5em 0; 
 font-family: 'IntroHeadB';
 color: #C76E00; 
--webkit-text-stroke: 0.5px #000000;
 }
 .ProseMirror h3 { font-size: 1.5em; margin: 0.5em 0; }
 .ProseMirror h4 { font-size: 1em; margin: 0.5em 0; }
