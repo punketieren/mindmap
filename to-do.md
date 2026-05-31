@@ -1,10 +1,10 @@
-\---
+---
 
 title: xto zdecb
 
-&#x20; markmap:
+  markmap:
 
-\---
+---
 
 # что здесь делать
 
