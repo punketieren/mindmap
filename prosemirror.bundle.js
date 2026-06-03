@@ -70922,24 +70922,19 @@
 	var ydoc = new Doc();
 	var ytext = ydoc.getText("shared-markdown");
 	var yXmlFragment = ydoc.getXmlFragment("prosemirror");
-	var provider = new WebrtcProvider("ynpvlb-mrkmp-collab-id-8874", ydoc, {
-		signaling: ["wss://libp2pmarkmap.hopto.org"],
-		awareness: void 0
-	});
+	var provider = new WebrtcProvider("ynpvlb-mrkmp-collab-id-8874", ydoc, { signaling: ["wss://libp2pmarkmap.hopto.org"] });
 	provider.on("status", ({ connected }) => {
 		const bar = document.getElementById("global-status");
 		if (bar) bar.textContent = connected ? "🟢 Коллаборация активна" : "🔴 Ожидание участников...";
-		console.log("y-webrtc:", connected ? "подключён" : "отключён");
 	});
 	provider.on("peers", ({ webrtcPeers }) => {
-		console.log("Активные P2P пиры:", webrtcPeers.length);
 		const bar = document.getElementById("global-status");
 		if (bar && webrtcPeers.length > 0) bar.textContent = `🟢 Пиров в сети: ${webrtcPeers.length}`;
 	});
 	function extractYaml(text) {
 		if (!text) return "";
-		const match = text.match(/^---[\s\S]*?---\s*\n?/);
-		return match ? match[0] : "";
+		const m = text.match(/^---[\s\S]*?---\s*\n?/);
+		return m ? m[0] : "";
 	}
 	function stripYaml(text) {
 		if (!text) return "";
@@ -70950,28 +70945,27 @@
 			const { state } = editorView;
 			if (!state?.selection) return;
 			const { $from } = state.selection;
-			for (const [markName, btnId] of Object.entries({
+			for (const [mn, id] of Object.entries({
 				strong: "bold",
 				em: "italic",
 				strike: "strike",
 				code: "code-inline",
 				mark: "highlight"
 			})) {
-				const mark = state.schema.marks[markName];
-				const active = mark && $from.marks().some((m) => m.type === mark);
-				document.getElementById(btnId)?.classList.toggle("active", !!active);
+				const mark = state.schema.marks[mn];
+				document.getElementById(id)?.classList.toggle("active", !!(mark && $from.marks().some((m) => m.type === mark)));
 			}
 			const parent = $from.node($from.depth);
-			for (const [nodeName, btnId] of Object.entries({
+			for (const [nn, id] of Object.entries({
 				bullet_list: "ul",
 				ordered_list: "ol",
 				blockquote: "quote",
 				code_block: "code-block"
-			})) document.getElementById(btnId)?.classList.toggle("active", parent.type.name === nodeName);
+			})) document.getElementById(id)?.classList.toggle("active", parent.type.name === nn);
 		};
 		update();
-		return { update(v, prev) {
-			if (v.state.selection !== prev.selection) update();
+		return { update(v, p) {
+			if (v.state.selection !== p.selection) update();
 		} };
 	} });
 	var FrontmatterExtension = class extends Extension {
@@ -70990,16 +70984,10 @@
 				attrs: { value: { default: "" } },
 				toDOM: () => [
 					"pre",
-					{
-						class: "markmap-config",
-						style: "display:none;"
-					},
+					{ class: "markmap-config" },
 					0
 				],
-				parseDOM: [{
-					tag: "pre.markmap-config",
-					getAttrs: (dom) => ({ value: dom.textContent })
-				}]
+				parseDOM: [{ tag: "pre.markmap-config" }]
 			} };
 		}
 	};
@@ -71011,121 +70999,84 @@
 	function proseMirrorToMarkdown(doc) {
 		return pmu.serialize(doc);
 	}
-	function sendToMapFrame(markdownText) {
-		document.getElementById("mapFrame")?.contentWindow?.postMessage({
-			type: "updateMap",
-			markdown: markdownText
-		}, "*");
+	var pmView = null;
+	function createProseMirror(container) {
+		if (pmView) return pmView;
+		pmView = new EditorView$1(container, { state: EditorState$1.create({
+			schema: mySchema,
+			plugins: [
+				ySyncPlugin(yXmlFragment),
+				yCursorPlugin(provider.awareness),
+				yUndoPlugin(),
+				history$1(),
+				keymap$1(baseKeymap),
+				buttonStatePlugin
+			]
+		}) });
+		window.editorView = pmView;
+		return pmView;
 	}
-	ytext.observe(() => {
-		sendToMapFrame(ytext.toString());
-	});
 	var cmView = null;
 	function createCodeMirror(container) {
-		if (cmView) {
-			cmView.destroy();
-			cmView = null;
-		}
+		if (cmView) return cmView;
 		cmView = new EditorView({
-			state: EditorState.create({
-				doc: ytext.toString(),
-				extensions: [
-					markdown(),
-					history(),
-					keymap.of([
-						...defaultKeymap,
-						{
-							key: "Mod-z",
-							run: undo$1
-						},
-						{
-							key: "Mod-y",
-							run: redo$1
-						},
-						{
-							key: "Mod-Shift-z",
-							run: redo$1
-						}
-					]),
-					EditorView.lineWrapping,
-					EditorView.theme({
-						"&": { height: "100%" },
-						".cm-scroller": { overflow: "auto" }
-					}),
-					yCollab(ytext, provider.awareness)
-				]
-			}),
+			state: EditorState.create({ extensions: [
+				markdown(),
+				history(),
+				keymap.of([
+					...defaultKeymap,
+					{
+						key: "Mod-z",
+						run: undo$1
+					},
+					{
+						key: "Mod-y",
+						run: redo$1
+					},
+					{
+						key: "Mod-Shift-z",
+						run: redo$1
+					}
+				]),
+				EditorView.lineWrapping,
+				EditorView.theme({
+					"&": { height: "100%" },
+					".cm-scroller": { overflow: "auto" }
+				}),
+				yCollab(ytext, provider.awareness)
+			] }),
 			parent: container
 		});
+		window.cmView = cmView;
 		return cmView;
 	}
-	var pmView = null;
-	function createProseMirror(container, initialMarkdown) {
-		if (pmView) {
-			pmView.destroy();
-			pmView = null;
-		}
-		const bodyOnly = stripYaml(initialMarkdown || ytext.toString());
-		pmView = new EditorView$1(container, {
-			state: EditorState$1.create({
-				schema: mySchema,
-				doc: markdownToProseMirror(bodyOnly),
-				plugins: [
-					ySyncPlugin(yXmlFragment),
-					yCursorPlugin(provider.awareness),
-					yUndoPlugin(),
-					history$1(),
-					keymap$1(baseKeymap),
-					buttonStatePlugin
-				]
-			}),
-			dispatchTransaction(tr) {
-				const newState = pmView.state.apply(tr);
-				pmView.updateState(newState);
-				if (tr.docChanged) {
-					const bodyMarkdown = proseMirrorToMarkdown(newState.doc);
-					const full = extractYaml(ytext.toString()) + bodyMarkdown;
-					if (full !== ytext.toString()) ydoc.transact(() => {
-						ytext.delete(0, ytext.length);
-						ytext.insert(0, full);
-					}, "pm-local");
-				}
-			}
-		});
-		return pmView;
-	}
-	async function initMarkdownEditor(container) {
-		if (!container) return;
-		if (!ytext.toString()) ytext.insert(0, "# Онлайн коллаборация\n\n- Связь налажена.");
-		pmView = createProseMirror(container, ytext.toString());
-		window.addEventListener("message", (e) => {
-			if (e.data?.type === "mapReady") sendToMapFrame(ytext.toString());
-			if (e.data?.type === "levelChanged") {
-				const span = document.getElementById("map-level");
-				if (span) span.textContent = e.data.level;
-			}
-		});
-		sendToMapFrame(ytext.toString());
-		return pmView;
-	}
 	function switchToCodeMirror() {
-		const container = document.getElementById("editor");
-		if (!container) return;
 		if (pmView) pmView.dom.style.display = "none";
-		if (cmView) cmView.dom.style.display = "block";
-		else createCodeMirror(container);
+		if (cmView) cmView.dom.style.display = "";
+		else createCodeMirror(document.getElementById("editor"));
+		cmView?.focus();
 	}
 	function switchToProseMirror() {
-		const container = document.getElementById("editor");
-		if (!container) return;
 		if (cmView) cmView.dom.style.display = "none";
-		createProseMirror(container, ytext.toString());
+		if (pmView) {
+			pmView.dom.style.display = "";
+			pmView.focus();
+		}
+	}
+	function sendToMapFrame(md) {
+		document.getElementById("mapFrame")?.contentWindow?.postMessage({
+			type: "updateMap",
+			markdown: md
+		}, "*");
 	}
 	window.ProseMirrorBundle = {
 		ydoc,
 		ytext,
 		yXmlFragment,
 		provider,
+		ySyncPlugin,
+		yCursorPlugin,
+		yUndoPlugin,
 		Schema: Schema$2,
 		EditorState: EditorState$1,
 		EditorView: EditorView$1,
@@ -71139,17 +71090,18 @@
 		setBlockType,
 		lift,
 		mySchema,
+		buttonStatePlugin,
 		markdownToProseMirror,
 		proseMirrorToMarkdown,
-		buttonStatePlugin,
+		CMView: EditorView,
+		CMState: EditorState,
 		extractYaml,
 		stripYaml,
+		sendToMapFrame,
 		createProseMirror,
 		createCodeMirror,
 		switchToCodeMirror,
-		switchToProseMirror,
-		initMarkdownEditor,
-		sendToMapFrame
+		switchToProseMirror
 	};
 	//#endregion
 })();
