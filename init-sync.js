@@ -7,25 +7,20 @@
         const B = window.ProseMirrorBundle;
         if (!B) { console.error('prosemirror.bundle.js не загружен'); return; }
 
-        // ── 1. ytext → PM (входящие правки от других пиров) ─────────
-        // Когда ytext меняется извне (не из PM) — обновляем PM-документ
+        // ── 1. ytext → PM (правки от других пиров) ───────────────────
         B.ytext.observe((event, txn) => {
-            // Пропускаем изменения которые сам PM только что записал
-            if (txn.origin === 'pm') return;
+            if (txn.origin === 'pm') return; // не обновляем PM его же правками
 
             const view = window.editorView;
             if (!view) return;
-
             try {
-                const body    = B.stripYaml(B.ytext.toString());
-                const newDoc  = B.markdownToProseMirror(body);
-                const tr      = view.state.tr.replaceWith(
-                    0, view.state.doc.content.size, newDoc.content
-                );
-                tr.setMeta('yjs-remote', true); // чтобы PM не записал это обратно в ytext
+                const body   = B.stripYaml(B.ytext.toString());
+                const newDoc = B.markdownToProseMirror(body);
+                const tr     = view.state.tr.replaceWith(0, view.state.doc.content.size, newDoc.content);
+                tr.setMeta('yjs-remote', true);
                 view.dispatch(tr);
             } catch(e) {
-                console.warn('ytext→PM sync error:', e.message);
+                console.warn('ytext→PM:', e.message);
             }
         });
 
@@ -35,18 +30,35 @@
         });
 
         // ── 3. Загрузка файла по умолчанию ───────────────────────────
-        // Ждём 2с — если пир уже прислал данные, не перезаписываем
-        setTimeout(async () => {
+        // Стратегия: ждём синхронизацию от пиров.
+        // Если через 3с ytext всё ещё пустой И нет пиров — грузим файл.
+        // Если пиры есть — ждём ещё 2с (они должны прислать данные).
+        async function loadDefault() {
+            // Есть ли уже данные?
             if (B.ytext.toString().length > 0) {
-                console.log('📡 Данные от пира получены, файл не загружаем');
+                console.log('📡 ytext уже заполнен, файл не грузим');
                 return;
             }
+
+            const peers = B.provider.webrtcConns?.size ?? 0;
+            if (peers > 0) {
+                // Есть пиры — ждём ещё 2с чтобы они прислали данные
+                console.log(`⏳ Есть ${peers} пиров, ждём их данные...`);
+                await new Promise(r => setTimeout(r, 2000));
+                if (B.ytext.toString().length > 0) {
+                    console.log('📡 Данные от пира получены');
+                    return;
+                }
+            }
+
+            // Грузим файл по умолчанию
             try {
                 const res = await fetch('/mindmap/to-do.md');
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const text = await res.text();
-                if (text.trim().startsWith('<!') || text.trim().startsWith('<html'))
-                    throw new Error('Сервер вернул HTML');
+                if (text.trim().startsWith('<')) throw new Error('Сервер вернул HTML');
+                // Последняя проверка — вдруг пир прислал пока мы грузили
+                if (B.ytext.toString().length > 0) return;
                 B.ydoc.transact(() => {
                     B.ytext.delete(0, B.ytext.length);
                     B.ytext.insert(0, text);
@@ -57,7 +69,9 @@
                 if (!B.ytext.toString())
                     B.ytext.insert(0, '# Начните писать...\n');
             }
-        }, 2000);
+        }
+
+        setTimeout(loadDefault, 3000);
 
         // ── 4. Мост с markmap iframe ──────────────────────────────────
         window.addEventListener('message', (e) => {
