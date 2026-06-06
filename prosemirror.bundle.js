@@ -71101,7 +71101,9 @@
 		createProseMirror,
 		createCodeMirror,
 		switchToCodeMirror,
-		switchToProseMirror
+		switchToProseMirror,
+		cmUndo: undo$1,
+		cmRedo: redo$1
 	};
 	//#endregion
 })();
