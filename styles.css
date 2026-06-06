@@ -3,6 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111;
+      --accent: #1ed760;
+      --text: #e8e8e8;
+	  --like: red;
+      --muted: #555;
+      --border: #1e1e1e;
+    }
+
 @font-face {
   font-family: 'Angst';
   src: url('font/AngstVF.woff') format('woff'),
@@ -37,7 +48,7 @@ src: url('font/Forum.woff') format('woff'),
   font-display: swap;
 }
 body {
-    background: #959595;
+      background: var(--bg);
     font-family: system-ui, sans-serif;
     height: 100vh;
     display: flex;
