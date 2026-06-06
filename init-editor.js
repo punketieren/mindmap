@@ -1,6 +1,8 @@
+// =============================================================
 // init-editor.js — ТОЛЬКО редактор и кнопки
 // Не знает про yjs, сеть, карту, переключение режимов
 // Зависит от: prosemirror.bundle.js (схема, команды)
+// =============================================================
 (function () {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
@@ -13,14 +15,11 @@
         if (!B) { console.error('prosemirror.bundle.js не загружен'); return; }
 
         const container = document.getElementById('editor');
-        // ── Создаём PM и CM (один раз) 
+
+        // PM создаём сразу, CM — лениво при первом переключении
         B.createProseMirror(container);
-        B.createCodeMirror(container);
 
-        // CM скрыт по умолчанию (стартуем в WYSIWYG)
-        if (window.cmView) window.cmView.dom.style.display = 'none';
-
-        // ── Обновление индикатора уровня заголовка 
+        // ── Обновление индикатора уровня заголовка ────────────────────
         function updateHeadingLevel() {
             const { $from } = window.editorView.state.selection;
             const node  = $from.node($from.depth);
@@ -31,10 +30,15 @@
         window.editorView.dom.addEventListener('click', updateHeadingLevel);
         window.editorView.dom.addEventListener('keyup',  updateHeadingLevel);
 
-        // ── Хелперы кнопок 
+        // ── Хелперы кнопок ───────────────────────────────────────────
+        // фокус возвращаем в активный редактор, не всегда в PM
+        function focusActive() {
+            const cmVisible = window.cmView && window.cmView.dom.style.display !== 'none';
+            cmVisible ? window.cmView.focus() : window.editorView.focus();
+        }
         function btn(id, fn) {
             const el = document.getElementById(id);
-            if (el) el.addEventListener('click', () => { fn(); window.editorView.focus(); });
+            if (el) el.addEventListener('click', () => { fn(); focusActive(); });
         }
 
         function toggleBlock(typeName) {
@@ -60,14 +64,15 @@
             return false;
         }
 
-        // ── Марки 
+        // ── Марки ────────────────────────────────────────────────────
+        // toggleMark сам включает/выключает — работает как тогл
         btn('bold',        () => B.toggleMark(B.mySchema.marks.strong)(window.editorView.state, window.editorView.dispatch));
         btn('italic',      () => B.toggleMark(B.mySchema.marks.em)(window.editorView.state, window.editorView.dispatch));
         btn('strike',      () => B.toggleMark(B.mySchema.marks.strike)(window.editorView.state, window.editorView.dispatch));
         btn('code-inline', () => B.toggleMark(B.mySchema.marks.code)(window.editorView.state, window.editorView.dispatch));
         btn('highlight',   () => B.toggleMark(B.mySchema.marks.mark)(window.editorView.state, window.editorView.dispatch));
 
-        // ── Блоки 
+        // ── Блоки ────────────────────────────────────────────────────
         btn('ul',    () => toggleBlock('bullet_list'));
         btn('ol',    () => toggleBlock('ordered_list'));
         btn('quote', () => toggleBlock('blockquote'));
@@ -79,7 +84,7 @@
                 : B.setBlockType(state.schema.nodes.code_block)(state, dispatch);
         });
 
-        // ── Заголовки 
+        // ── Заголовки ────────────────────────────────────────────────
         btn('heading-up', () => {
             const { state, dispatch } = window.editorView;
             const { $from } = state.selection;
@@ -105,9 +110,35 @@
             updateHeadingLevel();
         });
 
-        // ── Undo / Redo  yUndoPlugin перехватывает undo/redo — используем его команды
-        btn('undo', () => B.undo(window.editorView.state, window.editorView.dispatch));
-        btn('redo', () => B.redo(window.editorView.state, window.editorView.dispatch));
+        // ── Undo / Redo — работают в обоих режимах ───────────────────
+        btn('undo', () => {
+            const cmVisible = window.cmView && window.cmView.dom.style.display !== 'none';
+            if (cmVisible) {
+                B.cmUndo(window.cmView);
+            } else {
+                B.undo(window.editorView.state, window.editorView.dispatch);
+            }
+        });
+        btn('redo', () => {
+            const cmVisible = window.cmView && window.cmView.dom.style.display !== 'none';
+            if (cmVisible) {
+                B.cmRedo(window.cmView);
+            } else {
+                B.redo(window.editorView.state, window.editorView.dispatch);
+            }
+        });
+        btn('redo', () => {
+            const cmVisible = window.cmView && window.cmView.dom.style.display !== 'none';
+            if (cmVisible) {
+                window.cmView.dom.dispatchEvent(
+                    new KeyboardEvent('keydown', { key: 'y', ctrlKey: true, bubbles: true })
+                );
+            } else {
+                B.redo(window.editorView.state, window.editorView.dispatch);
+            }
+        });
+
+        // ── Ссылка ────────────────────────────────────────────────────
         btn('link', () => {
             const { state, dispatch } = window.editorView;
             const { from, to } = state.selection;
@@ -117,12 +148,15 @@
             if (!url.startsWith('http')) url = 'https://' + url;
             dispatch(state.tr.addMark(from, to, state.schema.marks.link.create({ href: url })));
         });
+
+        // ── Горизонтальная линия ──────────────────────────────────────
         btn('hr', () => {
             const { state, dispatch } = window.editorView;
             dispatch(state.tr.replaceSelectionWith(state.schema.nodes.horizontal_rule.create()));
         });
 
-        // ── Сохранение файла  Сохраняем полный ytext (с yaml) — не PM-документ
+        // ── Сохранение файла ─────────────────────────────────────────
+        // Сохраняем полный ytext (с yaml) — не PM-документ
         btn('save-btn', () => {
             const md   = B.ytext.toString();
             const blob = new Blob([md], { type: 'text/markdown' });
@@ -132,7 +166,8 @@
             URL.revokeObjectURL(url);
         });
 
-        // ── Загрузка файла  Пишем в ytext → ySyncPlugin и yCollab сами обновят PM и CM
+        // ── Загрузка файла ────────────────────────────────────────────
+        // Пишем в ytext → ySyncPlugin и yCollab сами обновят PM и CM
         btn('load-btn', () => {
             const input = Object.assign(document.createElement('input'), { type:'file', accept:'.md,.txt' });
             input.onchange = async (e) => {
@@ -149,7 +184,7 @@
             input.click();
         });
 
-        // ── Bubble menu 
+        // ── Bubble menu ───────────────────────────────────────────────
         const bubbleMenu = document.getElementById('bubble-menu');
         if (bubbleMenu) {
             document.addEventListener('selectionchange', () => {
@@ -169,7 +204,7 @@
             });
         }
 
-        // ── Выпадающие меню 
+        // ── Выпадающие меню ───────────────────────────────────────────
         const dropdowns = document.querySelectorAll('.dropdown');
         dropdowns.forEach(dd => {
             const toggle  = dd.querySelector(':scope > button');
