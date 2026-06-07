@@ -69848,31 +69848,34 @@
 	function createCodeMirror(container) {
 		if (cmView) return cmView;
 		cmView = new EditorView({
-			state: EditorState.create({ extensions: [
-				markdown(),
-				history(),
-				keymap.of([
-					...defaultKeymap,
-					{
-						key: "Mod-z",
-						run: undo$1
-					},
-					{
-						key: "Mod-y",
-						run: redo$1
-					},
-					{
-						key: "Mod-Shift-z",
-						run: redo$1
-					}
-				]),
-				EditorView.lineWrapping,
-				EditorView.theme({
-					"&": { height: "100%" },
-					".cm-scroller": { overflow: "auto" }
-				}),
-				yCollab(ytext, provider.awareness)
-			] }),
+			state: EditorState.create({
+				doc: ytext.toString(),
+				extensions: [
+					markdown(),
+					history(),
+					keymap.of([
+						...defaultKeymap,
+						{
+							key: "Mod-z",
+							run: undo$1
+						},
+						{
+							key: "Mod-y",
+							run: redo$1
+						},
+						{
+							key: "Mod-Shift-z",
+							run: redo$1
+						}
+					]),
+					EditorView.lineWrapping,
+					EditorView.theme({
+						"&": { height: "100%" },
+						".cm-scroller": { overflow: "auto" }
+					}),
+					yCollab(ytext, provider.awareness)
+				]
+			}),
 			parent: container
 		});
 		window.cmView = cmView;
@@ -69880,8 +69883,12 @@
 	}
 	function switchToCodeMirror() {
 		if (pmView) pmView.dom.style.display = "none";
-		if (!cmView) createCodeMirror(document.getElementById("editor"));
-		if (cmView) {
+		if (!cmView) {
+			createCodeMirror(document.getElementById("editor"));
+			requestAnimationFrame(() => {
+				if (cmView) cmView.focus();
+			});
+		} else {
 			cmView.dom.style.display = "";
 			cmView.focus();
 		}
