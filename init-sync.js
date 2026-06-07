@@ -7,10 +7,9 @@
         const B = window.ProseMirrorBundle;
         if (!B) { console.error('prosemirror.bundle.js не загружен'); return; }
 
-        // ── 1. ytext → PM (правки от других пиров) ───────────────────
+        // ytext → PM (правки от других пиров)
         B.ytext.observe((event, txn) => {
-            if (txn.origin === 'pm') return; // не обновляем PM его же правками
-
+            if (txn.origin === 'pm') return;
             const view = window.editorView;
             if (!view) return;
             try {
@@ -24,41 +23,25 @@
             }
         });
 
-        // ── 2. ytext → markmap ────────────────────────────────────────
+        // ytext → markmap
         B.ytext.observe(() => {
             B.sendToMapFrame(B.ytext.toString());
         });
 
-        // ── 3. Загрузка файла по умолчанию ───────────────────────────
-        // Стратегия: ждём синхронизацию от пиров.
-        // Если через 3с ytext всё ещё пустой И нет пиров — грузим файл.
-        // Если пиры есть — ждём ещё 2с (они должны прислать данные).
-        async function loadDefault() {
-            // Есть ли уже данные?
-            if (B.ytext.toString().length > 0) {
-                console.log('📡 ytext уже заполнен, файл не грузим');
-                return;
-            }
+        // Загрузка файла по умолчанию
+        // Стратегия: слушаем пиров. Если через 5с никто не прислал данные — грузим сами.
+        let defaultLoaded = false;
 
-            const peers = B.provider.webrtcConns?.size ?? 0;
-            if (peers > 0) {
-                // Есть пиры — ждём ещё 2с чтобы они прислали данные
-                console.log(`⏳ Есть ${peers} пиров, ждём их данные...`);
-                await new Promise(r => setTimeout(r, 2000));
-                if (B.ytext.toString().length > 0) {
-                    console.log('📡 Данные от пира получены');
-                    return;
-                }
-            }
-
-            // Грузим файл по умолчанию
+        async function tryLoadDefault() {
+            if (defaultLoaded) return;
+            if (B.ytext.toString().length > 0) { defaultLoaded = true; return; }
+            defaultLoaded = true;
             try {
                 const res = await fetch('/mindmap/to-do.md');
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const text = await res.text();
-                if (text.trim().startsWith('<')) throw new Error('Сервер вернул HTML');
-                // Последняя проверка — вдруг пир прислал пока мы грузили
-                if (B.ytext.toString().length > 0) return;
+                if (text.trim().startsWith('<')) throw new Error('HTML ответ');
+                if (B.ytext.toString().length > 0) return; // пир успел прислать
                 B.ydoc.transact(() => {
                     B.ytext.delete(0, B.ytext.length);
                     B.ytext.insert(0, text);
@@ -66,14 +49,21 @@
                 console.log('✅ Загружен to-do.md');
             } catch (e) {
                 console.warn('❌ Не удалось загрузить:', e.message);
-                if (!B.ytext.toString())
-                    B.ytext.insert(0, '# Начните писать...\n');
+                if (!B.ytext.toString()) B.ytext.insert(0, '# Начните писать...\n');
             }
         }
 
-        setTimeout(loadDefault, 3000);
+        // Если пир подключился и прислал данные — отменяем загрузку файла
+        B.ytext.observe((event, txn) => {
+            if (txn.origin !== 'pm' && txn.origin !== 'load-default' && B.ytext.toString().length > 0) {
+                defaultLoaded = true;
+            }
+        });
 
-        // ── 4. Мост с markmap iframe ──────────────────────────────────
+        // Страховочный таймаут — 5с
+        setTimeout(tryLoadDefault, 5000);
+
+        // Мост с markmap iframe
         window.addEventListener('message', (e) => {
             if (e.data?.type === 'mapReady')     B.sendToMapFrame(B.ytext.toString());
             if (e.data?.type === 'levelChanged') {
@@ -83,7 +73,7 @@
         });
         setTimeout(() => B.sendToMapFrame(B.ytext.toString()), 1000);
 
-        // ── 5. Переключение режимов ───────────────────────────────────
+        // Переключение режимов
         const wysiwygRadio  = document.querySelector('input[value="wysiwyg"]');
         const markdownRadio = document.querySelector('input[value="markdown"]');
         if (wysiwygRadio && markdownRadio) {
@@ -91,7 +81,7 @@
             markdownRadio.addEventListener('change', () => { if (markdownRadio.checked) B.switchToCodeMirror(); });
         }
 
-        // ── 6. Кнопка уровня карты ────────────────────────────────────
+        // Кнопка уровня карты
         document.getElementById('map-level')?.addEventListener('click', () => {
             const level = parseInt(document.getElementById('map-level').textContent, 10);
             if (!isNaN(level))

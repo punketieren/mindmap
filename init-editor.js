@@ -9,9 +9,7 @@
 
         const container = document.getElementById('editor');
         B.createProseMirror(container);
-        // CM не создаём — лениво при первом переключении на markdown
 
-        // ── Уровень заголовка ─────────────────────────────────────────
         function updateHeadingLevel() {
             const { $from } = window.editorView.state.selection;
             const node  = $from.node($from.depth);
@@ -22,36 +20,32 @@
         window.editorView.dom.addEventListener('click', updateHeadingLevel);
         window.editorView.dom.addEventListener('keyup', updateHeadingLevel);
 
-        // ── Хелперы ───────────────────────────────────────────────────
         function pmActive() {
-            return window.cmView ? window.cmView.dom.style.display === 'none' : true;
+            const cmw = document.getElementById('cm-wrapper');
+            return !cmw || cmw.style.display === 'none';
         }
         function btn(id, fn) {
             const el = document.getElementById(id);
             if (el) el.addEventListener('click', () => {
                 fn();
                 if (pmActive()) window.editorView.focus();
-                else window.cmView.focus();
+                else window.cmView?.focus();
             });
         }
         function pm() { return window.editorView; }
 
-        // ── Марки ─────────────────────────────────────────────────────
-        // strike и mark (highlight) могут отсутствовать в схеме —
-        // проверяем наличие перед вызовом
         function toggleMarkSafe(markName) {
             const mark = B.mySchema.marks[markName];
-            if (!mark) { console.warn('Марк не найден в схеме:', markName); return; }
+            if (!mark) { console.warn('Марк не найден:', markName, '| Доступны:', Object.keys(B.mySchema.marks)); return; }
             B.toggleMark(mark)(pm().state, pm().dispatch);
         }
 
         btn('bold',        () => toggleMarkSafe('strong'));
         btn('italic',      () => toggleMarkSafe('em'));
-        btn('strike',      () => toggleMarkSafe('strike'));
+        btn('strike',      () => toggleMarkSafe('strikethrough')); // исправлено
         btn('code-inline', () => toggleMarkSafe('code'));
-        btn('highlight',   () => toggleMarkSafe('mark'));
+        btn('highlight',   () => toggleMarkSafe('mark'));          // нет в GFM — warn в консоли
 
-        // ── Блоки ─────────────────────────────────────────────────────
         function toggleBlock(typeName) {
             const { state, dispatch } = pm();
             const { $from } = state.selection;
@@ -80,7 +74,6 @@
                    : B.setBlockType(state.schema.nodes.code_block)(state, dispatch);
         });
 
-        // ── Заголовки ─────────────────────────────────────────────────
         btn('heading-up', () => {
             const { state, dispatch } = pm();
             const node = state.selection.$from.node(state.selection.$from.depth);
@@ -103,7 +96,6 @@
             updateHeadingLevel();
         });
 
-        // ── Undo / Redo ───────────────────────────────────────────────
         btn('undo', () => {
             if (pmActive()) B.undo(pm().state, pm().dispatch);
             else B.cmUndo(window.cmView);
@@ -113,7 +105,6 @@
             else B.cmRedo(window.cmView);
         });
 
-        // ── Ссылка ────────────────────────────────────────────────────
         btn('link', () => {
             const { state, dispatch } = pm();
             const { from, to } = state.selection;
@@ -124,13 +115,11 @@
             dispatch(state.tr.addMark(from, to, state.schema.marks.link.create({ href: url })));
         });
 
-        // ── Горизонтальная линия ──────────────────────────────────────
         btn('hr', () => {
             const { state, dispatch } = pm();
             dispatch(state.tr.replaceSelectionWith(state.schema.nodes.horizontal_rule.create()));
         });
 
-        // ── Сохранение ────────────────────────────────────────────────
         btn('save-btn', () => {
             const md   = B.ytext.toString();
             const blob = new Blob([md], { type: 'text/markdown' });
@@ -139,7 +128,6 @@
             URL.revokeObjectURL(url);
         });
 
-        // ── Загрузка ──────────────────────────────────────────────────
         btn('load-btn', () => {
             const input = Object.assign(document.createElement('input'), { type:'file', accept:'.md,.txt' });
             input.onchange = async (e) => {
@@ -154,21 +142,24 @@
             input.click();
         });
 
-        // ── Bubble menu ───────────────────────────────────────────────
-        // Показываем только когда выделен текст ВНУТРИ PM
+        // Bubble menu — позиционируется относительно viewport
+        // сам элемент #bubble-menu в тулбаре, перемещаем его в body
         const bubbleMenu = document.getElementById('bubble-menu');
         if (bubbleMenu) {
+            // Переносим bubble menu в body чтобы позиционирование было глобальным
+            document.body.appendChild(bubbleMenu);
+            bubbleMenu.style.position = 'fixed';
+
             window.editorView.dom.addEventListener('mouseup', () => {
                 const sel = window.getSelection();
                 if (!sel || sel.isCollapsed || !sel.toString().trim()) {
                     bubbleMenu.classList.remove('visible');
                     return;
                 }
-                // Убедимся что выделение внутри PM
                 if (!window.editorView.dom.contains(sel.anchorNode)) return;
                 const rect = sel.getRangeAt(0).getBoundingClientRect();
-                bubbleMenu.style.left = (rect.left + window.scrollX) + 'px';
-                bubbleMenu.style.top  = (rect.top  + window.scrollY - 48) + 'px';
+                bubbleMenu.style.left = rect.left + 'px';
+                bubbleMenu.style.top  = (rect.top - 48) + 'px';
                 bubbleMenu.classList.add('visible');
             });
             document.addEventListener('mousedown', (e) => {
@@ -176,7 +167,6 @@
             });
         }
 
-        // ── Выпадающие меню ───────────────────────────────────────────
         document.querySelectorAll('.dropdown').forEach(dd => {
             const toggle  = dd.querySelector(':scope > button');
             const content = dd.querySelector('.dropdown-content');
@@ -192,6 +182,6 @@
                 document.querySelectorAll('.dropdown-content.show').forEach(c => c.classList.remove('show'));
         });
 
-        console.log('✅ init-editor.js готов. Марки в схеме:', Object.keys(B.mySchema.marks));
+        console.log('✅ init-editor.js. Марки:', Object.keys(B.mySchema.marks));
     }
 })();

@@ -69759,9 +69759,8 @@
 			for (const [mn, id] of Object.entries({
 				strong: "bold",
 				em: "italic",
-				strike: "strike",
-				code: "code-inline",
-				mark: "highlight"
+				strikethrough: "strike",
+				code: "code-inline"
 			})) {
 				const mark = state.schema.marks[mn];
 				document.getElementById(id)?.classList.toggle("active", !!(mark && $from.marks().some((m) => m.type === mark)));
@@ -69882,23 +69881,33 @@
 		return cmView;
 	}
 	function switchToCodeMirror() {
-		if (pmView) pmView.dom.style.display = "none";
-		if (!cmView) {
-			createCodeMirror(document.getElementById("editor"));
-			requestAnimationFrame(() => {
-				if (cmView) cmView.focus();
-			});
-		} else {
-			cmView.dom.style.display = "";
-			cmView.focus();
-		}
+		if (!pmView) return;
+		ensureWrappers();
+		document.getElementById("pm-wrapper").style.display = "none";
+		document.getElementById("cm-wrapper").style.display = "";
+		if (!cmView) createCodeMirror(document.getElementById("cm-wrapper"));
+		cmView.focus();
 	}
 	function switchToProseMirror() {
-		if (cmView) cmView.dom.style.display = "none";
-		if (pmView) {
-			pmView.dom.style.display = "";
-			pmView.focus();
-		}
+		ensureWrappers();
+		document.getElementById("cm-wrapper").style.display = "none";
+		document.getElementById("pm-wrapper").style.display = "";
+		pmView.focus();
+	}
+	var wrappersReady = false;
+	function ensureWrappers() {
+		if (wrappersReady) return;
+		wrappersReady = true;
+		const editor = document.getElementById("editor");
+		const pmWrapper = document.createElement("div");
+		pmWrapper.id = "pm-wrapper";
+		pmWrapper.style.cssText = "height:100%;display:block;";
+		const cmWrapper = document.createElement("div");
+		cmWrapper.id = "cm-wrapper";
+		cmWrapper.style.cssText = "height:100%;display:none;";
+		editor.insertBefore(pmWrapper, editor.firstChild);
+		pmWrapper.appendChild(pmView.dom);
+		editor.appendChild(cmWrapper);
 	}
 	function sendToMapFrame(md) {
 		document.getElementById("mapFrame")?.contentWindow?.postMessage({
