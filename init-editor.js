@@ -193,7 +193,7 @@
     color: #111111;
     font-weight: 600;
     margin-top: 0;
-    margin-bottom: 12pt;
+    margin-bottom: 8pt;
     page-break-after: avoid; /* Запрещает разрыв страницы СРАЗУ ПОСЛЕ заголовка */
     break-after: avoid;
   }
@@ -205,7 +205,7 @@
     display: block !important; 
 font-size: 28pt;
     padding-right: 0;
-    margin-top: -80pt; }
+    margin-top: -65pt; }
   h3 { font-size: 22pt; font-family: 'Courier New',  sans-serif !important; 
     margin-top: 24pt;
     text-align: center; }
