@@ -205,7 +205,7 @@
     display: block !important; 
 font-size: 28pt;
     padding-right: 0;
-    margin-top: 24pt; }
+    margin-top: -24pt; }
   h3 { font-size: 22pt; font-family: 'Courier New',  sans-serif !important; 
     margin-top: 24pt;
     text-align: center; }
