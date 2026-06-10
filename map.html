@@ -5,6 +5,20 @@
     <style>
         body { margin: 0; overflow: hidden; }
         #markmap-container { width: 100vw; height: 100vh; }
+		
+		/* 3. Полная кастомизация ССЫЛОК внутри интеллект-карты */
+.markmap-node a {
+    font-family: Georgia,  serif !important; /* Ставим нужный круглый шрифт */
+    color: #ff5500 !important;       /* Задаем любой цвет ссылке на карте */
+    text-decoration: none !important; /* Убираем подчеркивание */
+    font-weight: bold !important;
+}
+
+/* Эффект при наведении мышки на ссылку в карте */
+.markmap-node a:hover {
+    color: #ff0000 !important;
+    text-decoration: underline !important; 
+}
     </style>
 </head>
 <body>
