@@ -105,18 +105,18 @@
 ### Survival
 
 * **Джон** — *«Малыш»* [\[ The Kid, 1921 \]](https://www.imdb.com/title/tt0012349)
-* ==**Паскуале и Джузеппе** — *«Шуша»* [\[ Sciuscià, 1946 \]](https://www.imdb.com/title/tt0038913)==
+* **Паскуале и Джузеппе** — *«Шуша»* [\[ Sciuscià, 1946 \]](https://www.imdb.com/title/tt0038913)
 * **Джек** ***«Ловкий плут»*** **Доукинс** — *«Оливер!»* [\[ Oliver!, 1968 \]](https://www.imdb.com/title/tt0063385)
 * **Подростки** — *«Генералы песчаных карьеров»* [\[ The Sandpit Generals, 1971 \]](https://www.imdb.com/title/tt0067705)
-* ==**Дети трущоб Бракка** — *«Отвратительные, грязные, злые»* [\[ Brutti, sporchi e cattivi, 1976 \]](https://www.imdb.com/title/tt0074252)==
+* **Дети трущоб Бракка** — *«Отвратительные, грязные, злые»* [\[ Brutti, sporchi e cattivi, 1976 \]](https://www.imdb.com/title/tt0074252)
 * **Сью** — *«Кудряшка Сью»* [\[ Curly Sue, 1991 \]](https://www.imdb.com/title/tt0101635)
 * **Терман Мерман** — *«Плохой Санта»* [\[ Bad Santa, 2003 \]](https://www.imdb.com/title/tt0307987)
-* **Саша Савельев** — [«Похороните меня за плинтусом», 2009 \]](https://www.imdb.com/title/tt1403085)
+* **Саша Савельев** — [\[ «Похороните меня за плинтусом», 2009 \]](https://www.imdb.com/title/tt1403085)
 * **Муни** — *«Проект "Флорида"»* [\[ The Florida Project, 2017 \]](https://www.imdb.com/title/tt5649144)
 
 ### Trixter
-* ==**Яцек и Пляцек** — *«О тех, кто украл луну»* [\[ O dwóch takich, co ukradli księżyc, 1962 \]](https://www.imdb.com/title/tt0060771)==   
-* ==**Джанино Стоппани** — *«Дневник Джана Бурраски»* [\[ Il giornalino di Gian Burrasca, 1964 \]](https://www.imdb.com/title/tt0059223)==
+* **Яцек и Пляцек** — *«О тех, кто украл луну»* [\[ O dwóch takich, co ukradli księżyc, 1962 \]](https://www.imdb.com/title/tt0060771)   
+* **Джанино Стоппани** — *«Дневник Джана Бурраски»* [\[ Il giornalino di Gian Burrasca, 1964 \]](https://www.imdb.com/title/tt0059223)
 * **Джек** ***«Ловкий плут»*** **Доукинс** — «Оливер!» [\[ Oliver!, 1968 \]](https://www.imdb.com/title/tt0063385)
 * **Пеппи** — *«Пеппи Длинныйчулок»* [\[ Pippi Långstrump, 1969 \]](https://www.imdb.com/title/tt0062598) 
 * **Оскар Мацерат** — *«Жестяной барабан»* [\[ Die Blechtrommel, 1979 \]](https://www.imdb.com/title/tt0078875/)
