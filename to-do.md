@@ -6,69 +6,67 @@
 
 ### Horror
 
-* **Рода Пенмарк** — *«Дурная кровь»* [\[ The Bad Seed, 1956 \]]()
-* **Монастырские школьницы** — *«Не избавляй нас от лукавого»* [\[ Ne nous délivrez pas du mal, 1971 \]]()
-* **Дебби, Кертис и Стивен** — *«Кровавый день рождения»* [\[ Bloody Birthday, 1981 \]]()
-* **Майки Леброк** — *«Майки»* [\[ Mikey, 1992  \]]()
-* **Лукас и Элиас** — *«Я вижу, я вижу»* [\[ Ich seh, Ich seh, 2014  \]]()
+* **Рода Пенмарк** — *«Дурная кровь»* [\[ The Bad Seed, 1956 \]](https://www.imdb.com/title/tt0048977)
+* **Монастырские школьницы** — *«Не избавляй нас от лукавого»* [\[ Ne nous délivrez pas du mal, 1971 \]](https://www.imdb.com/fr/title/tt0066040)
+* **Деби, Керт, Стив** — *«Кровавый день рождения»* [\[ Bloody Birthday, 1981 \]](https://www.imdb.com/title/tt0082084/)
+* **Майки Леброк** — *«Майки»* [\[ Mikey, 1992 \]](https://www.imdb.com/title/tt0104870)
+* **Лукас и Элиас** — *«Я вижу, я вижу»* [\[ Ich seh, Ich seh, 2014  \]](https://www.imdb.com/de/title/tt3086442)
 
 ### Thriller
 
-* **Генри Эванс** — *«Хороший сын»* [\[ The Good Son, 1993](https://www.imdb.com/title/tt0107034)
-* **Петер и Пауль** — *«Забавные игры»* [\[ Funny Games, 1997 \]]()
-* **Эмили** — *«Игра в прятки»* [\[ Hide and Seek, 2005 \]]()
-* **Джошуа** — *«Джошуа»* [\[ Joshua, 2007](https://www.imdb.com/title/tt0808331)
-* **Сюя и Наоки** — *«Признания»* [\[ Kokuhaku, 2010 \]]()
-* **Люк** — *«Смотри по сторонам»* [\[ Better Watch Out, 2016 \]]()
+* **Генри Эванс** — *«Хороший сын»* [\[ The Good Son, 1993 \]](https://www.imdb.com/title/tt0107034)
+* **Петер и Пауль** — *«Забавные игры»* [\[ Funny Games, 1997 \]](https://www.imdb.com/title/tt0119167)
+* **Эмили** — *«Игра в прятки»* [\[ Hide and Seek, 2005 \]](https://www.imdb.com/title/tt0382077)
+* **Джошуа** — *«Джошуа»* [\[ Joshua, 2007 \]](https://www.imdb.com/title/tt0808331)
+* **Сюя и Наоки** — *«Признания»* [\[ Kokuhaku, 2010 \]](https://www.imdb.com/title/tt1590089)
+* **Люк** — *«Смотри по сторонам»* [\[ Better Watch Out, 2016 \]](https://www.imdb.com/title/tt4443658)
 
 ### Drama
 
-* ==**Ана niña** — *«Выкорми ворона»* [\[ Cría cuervos, 1976 \]](https://www.imdb.com/es/title/tt0074360)==
-* **Жозеф** — *«До свидания, мальчики»* [\[ Au revoir les enfants, 1987 \]]()
-* ==**Фрэнси Брэди** — *«Мальчик-мясник»* [\[ The Butcher Boy, 1997 \]]()==
-* **Анаис** — *«Моей сестре!»* [\[ À ma sœur!, 2001 \]]()
-* **Су-ми и Су-ён** — *«История двух сестер»* [\[ A Tale of Two Sisters, 2003 \]]()
-* ==**Кевин** — *«Что-то не так с Кевином»* [\[ We Need to Talk About Kevin, 2011 \]]()==
-* **Юя** — *«Разрушители мира / Дистиллятор жестокости»* [\[ Disutorakshon beibîzu, 2016 \]]()
+* **Ана niña** — *«Выкорми ворона»* [\[ Cría cuervos, 1976 \]](https://www.imdb.com/es/title/tt0074360)
+* **Жозеф** — *«До свидания, мальчики»* [\[ Au revoir les enfants, 1987 \]](https://www.imdb.com/fr/title/tt0092593)
+* **Фрэнси Брэди** — *«Мальчик-мясник»* [\[ The Butcher Boy, 1997 \]](https://www.imdb.com/title/tt0118804)
+* **Анаис** — *«Моей сестре!»* [\[ À ma sœur!, 2001 \]](https://www.imdb.com/fr/title/tt0243255)
+* **Су-ми, Су-ён** — *«История двух сестер»* [\[ A Tale of Two Sisters, 2003 \]](https://www.imdb.com/title/tt0365376)
+* **Кевин** — *«Что-то не так с Кевином»* [\[ We Need to Talk About Kevin, 2011 \]](https://www.imdb.com/title/tt1242460)
+* **Юя** — *«Детки-разрушители»* [\[ Disutorakshon beibîzu, 2016 \]](https://www.imdb.com/title/tt4912452)
 
 ## Коллективное детское зло
 
 *Фильмы, в которых источником угрозы выступает группа, коммуна, банда или религиозный культ, состоящий исключительно из детей.*
- 
-
 
 ### Cult
  
 * **Дети из Ларчвилла** — *«Дети кукурузы»* [\[ Children of the Corn, 1984 \]](https://www.imdb.com/title/tt0087050)
 * **Светловолосые дети** — *«Деревня проклятых»* [\[ Village of the Damned, 1960 \]](https://www.imdb.com/title/tt0054443)
 * **Фредди и его банда** — *«Жизнь Иисуса»* [\[ La vie de Jésus, 1997 \]](https://www.imdb.com/title/tt0120448)
-* **Дети из хора** — *Белая лента* [\[ Das weiße Band - Eine deutsche Kindergeschichte, 2009 \]](https://www.imdb.com/de/title/tt1149362)
+* **Дети из хора** — *«Белая лента»* [\[ Das weiße Band - Eine deutsche Kindergeschichte, 2009 \]](https://www.imdb.com/de/title/tt1149362)
   
 ### Pack 
  
-* **Джек и племя дикарей** — *«Повелитель мух»* [\[ Lord of the Flies, 1963 \]]()
+* **Джек и племя дикарей** — *«Повелитель мух»* [\[ Lord of the Flies, 1963 \]](https://www.imdb.com/title/tt0057261)
 * **Дети острова** — *«Кто может убить ребёнка?»* [\[ ¿Quién puede matar a un niño?, 1976 \]](https://www.imdb.com/es/title/tt0075462)
-* ==**Каспер и Тэлли** — *«Детки»* [\[ Kids, 1995 \]]()== 
-* **Сюя, Норико и одноклассники** — *«Королевская битва»* [\[ Battle Royale, 2000 \]]()
+* **Каспер и Тэлли** — *«Детки»* [\[ Kids, 1995 \]](https://www.imdb.com/title/tt0113540) 
+* **Сюя, Норико и одноклассники** — *«Королевская битва»* [\[ Battle Royale, 2000 \]](https://www.imdb.com/title/tt0266308)
 * **Маленький Зе и банда** — *«Город Бога»* [\[ Cidade de Deus, 2002 \]](https://www.imdb.com/pt/title/tt0317248)
 * **Безымянные** — *«Они»* [\[ Ils, 2006 \]](https://www.imdb.com/title/tt0465203)
-* **Брэтт и его банда** — *«Райское озеро»* [\[ Eden Lake, 2008 \]]()
+* **Брэтт и его банда** — *«Райское озеро»* [\[ Eden Lake, 2008 \]](https://www.imdb.com/title/tt1020530)
 * **Кристи, Миранда, Нельсон и Поли** — *«Дети»* [\[ The Children, 2008 \]](https://www.imdb.com/title/tt1172571)
-* **Группа подростков** — *«Игра»* [\[ Play, 2011 \]]()
-* **Группа малолетних преступников** — *«Суд по делам несовершеннолетних»* [\[ Sonyeonsimpan, 2022 \]]()
-
+* **Группа подростков** — *«Игра»* [\[ Play, 2011 \]](https://www.imdb.com/title/tt1376717)
+* **Малолетние преступники** — *«Ювенальный суд»* [\[ Sonyeonsimpan, 2022 \]](https://www.imdb.com/title/tt15553922)
 
 ### Cell
  
-*  ==**Шон** — *«Это Англия»* [\[ This Is England, 2006 \]]()==
-* **Марием и банда** — *«Банда девчонок»* [\[ Bande de filles, 2014 \]]()
-* **Группа подростков** — *«Завтра»* [\[ Nocturama, 2016 \]]()
+* **Шон** — *«Это Англия»* [\[ This Is England, 2006 \]](https://www.imdb.com/title/tt0480025)
+* **Марием и банда** — *«Банда девчонок»* [\[ Bande de filles, 2014 \]](https://www.imdb.com/title/tt3655522)
+* **Группа подростков** — *«Завтра»* [\[ Nocturama, 2016 \]](https://www.imdb.com/title/tt4795546)
+
 ### Hiérarchie
  
-* ==**Шмакова, Попов, Рыжий и Живодер** — *«Чучело»* [\[ Chuchelo, 1983 \]]()== 
-* **Хосино и банда школьников** — *«Всё о Лили Чоу-Чоу»* [\[ All About Lily Chou-Chou, 2001 \]]()
-* **Старшеклассники-садисты** — *«Зло»* [\[ Ondskan, 2003 \]]()
-* **Дин и подростки** — *«Чумной город»* [\[ The Chumscrubber, 2005 \]]()
+* **Шмакова, Попов, Рыжий и Живодер** — *«Чучело»* [\[ Chuchelo, 1983 \]](https://www.imdb.com/title/tt0085335/)
+* **Хосино и банда школьников** — *«Всё о Лили Чоу-Чоу»* [\[ All About Lily Chou-Chou, 2001 \]](https://www.imdb.com/title/tt0297721)
+* **Старшеклассники-садисты** — *«Зло»* [\[ Ondskan, 2003 \]](https://www.imdb.com/title/tt0338309/)
+* **Дин и подростки** — *«Чумной город»* [\[ The Chumscrubber, 2005 \]](https://www.imdb.com/title/tt0406650)
 
 ## Озорство и  Бытовой террор
 
@@ -89,19 +87,20 @@
 * **Барт Симпсон** — *«Симпсоны»* [\[ The Simpsons, 1989 \]](https://www.imdb.com/title/tt0096697)
 * **Джуниор Хили** — *«Трудный ребенок»* [\[ Problem Child, 1990 \]](https://www.imdb.com/title/tt0100419)
 * **Денис Митчелл** — *«Денис-мучитель»* [\[ Dennis the Menace, 1993 \]](https://www.imdb.com/title/tt0106701)
-* ==**Элфалфа, Спанки и Дарла** — *«Маленькие негодяи»* [\[ The Little Rascals, 1994 \]](https://www.imdb.com/title/tt0110366)==
+* **Элфалфа, Спанки и Дарла** — *«Маленькие негодяи»* [\[ The Little Rascals, 1994 \]](https://www.imdb.com/title/tt0110366)
 * **Расти Дуритц** — *«Малыш»* [\[ The Kid, 2000 \]](https://www.imdb.com/title/tt0219854) 
 * **Сэмюэл** — *«Бабадук»* [\[ The Babadook, 2014 \]](https://www.imdb.com/title/tt2321549)
 
 ### Strategic
 
 * **Тимур**  —  [\[ «Тимур и его команда», 1940 \]](https://www.imdb.com/title/tt0180250)
-* ==**Сюзанна и Шэрон** — *«Ловушка для родителей»* [\[ The Parent Trap, 1961 \]](https://www.imdb.com/title/tt0055277)==
-* ==**Вэл Бойд и Джил Гилберт** — *«Мир Генри Ориента»* [\[ The World of Henry Orient, 1964 \]](https://www.imdb.com/title/tt0058756)==
+* **Сюзанна и Шэрон** — *«Ловушка для родителей»* [\[ The Parent Trap, 1961 \]](https://www.imdb.com/title/tt0055277)
+* **Вэл Бойд и Джил Гилберт** — *«Мир Генри Ориента»* [\[ The World of Henry Orient, 1964 \]](https://www.imdb.com/title/tt0058756)
 * **Мишка и Генка** — [\[ «Кортик», 1973 \]](https://www.imdb.com/title/tt0069600)
 * **Алисса и Аманда** — *«Двое: я и моя тень»* [\[ It Takes Two, 1995 \]](https://www.imdb.com/title/tt0113442)
 * **Грег Хеффли** — *«Дневник слабака»* [\[ Diary of a Wimpy Kid, 2010 \]](https://www.imdb.com/title/tt1196141)
-* ==**Макс, Лукас и Тор** — *«Красавчики»* [\[ Good Boys, 2019 \]](https://www.imdb.com/title/tt6977338)==
+* **Ханна** — *«Ханна»* [\[ Hanna, 2011 \]](https://www.imdb.com/title/tt0993842)
+* **Макс, Лукас и Тор** — *«Красавчики»* [\[ Good Boys, 2019 \]](https://www.imdb.com/title/tt6977338)
 
 ### Survival
 
@@ -190,4 +189,3 @@
 
 * **Акира и Сигэру** — *«Никто не узнает»* [\[ Dare mo shiranai, 2004 \]](https://www.imdb.com/title/tt0418606)
 * **Денис Кораблев** — [\[ «По секрету всему свету», 1976  \]](https://www.imdb.com/title/tt2104965)
-* **Ханна** — *«Ханна»* [\[ Hanna, 2011 \]](https://www.imdb.com/title/tt0993842/)
