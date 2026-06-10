@@ -205,7 +205,7 @@
     display: block !important; 
 font-size: 28pt;
     padding-right: 0;
-    margin-top: -24pt; }
+    margin-top: -80pt; }
   h3 { font-size: 22pt; font-family: 'Courier New',  sans-serif !important; 
     margin-top: 24pt;
     text-align: center; }
@@ -258,7 +258,7 @@ html body li strong {
     font-weight: bold !important; /* Гарантируем, что он останется жирным */
     
     font-family: 'MyLocalNunito', sans-serif !important; 
-    letter-spacing: -0.07em !important; /* Чуть сближаем буквы для красоты */
+    letter-spacing: -0.06em !important; /* Чуть сближаем буквы для красоты */
     
     /* Пример кастомных стилей (измените под себя или удалите лишнее): */
     color: #000000 !important;    /* Цвет текста (можно сделать, например, темно-синим #003366) */
