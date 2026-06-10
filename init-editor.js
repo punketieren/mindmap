@@ -373,6 +373,17 @@ a {
     /* Дополнительно: если нужно, чтобы ссылки при печати не выделялись синим цветом */
     color: inherit !important;       /* Ссылка примет цвет родительского текста (черный) */
 }
+@media print {
+    /* Создаем класс, который принудительно разрывает страницу */
+    .page-break {
+        display: block !important;
+        page-break-before: always !important; /* Для старых браузеров */
+        break-before: page !important;        /* Современный стандарт */
+        height: 0 !important;                  /* Элемент не занимает места на экране */
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
 
 </style>
 </head>
