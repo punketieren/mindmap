@@ -153,8 +153,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Экспорт документа</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prosemirror-view@1.31.0/style/prosemirror.css">
+    <title>Экспорт документа</title> 
     <style>
 @media print, screen {
     /* 1. Жестко регистрируем установленный в системе шрифт под коротким именем */
