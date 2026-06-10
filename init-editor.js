@@ -141,6 +141,256 @@
             };
             input.click();
         });
+		
+		btn('export-btn', () => {
+    const view = window.editorView;
+    if (!view) return;
+
+    const contentHtml = view.dom.innerHTML;
+
+    const fullHtml = `<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экспорт документа</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prosemirror-view@1.31.0/style/prosemirror.css">
+    <style>
+@media print, screen {
+    /* 1. Жестко регистрируем установленный в системе шрифт под коротким именем */
+    @font-face {
+        font-family: 'MyLocalNunito';
+        /* Перебираем все возможные варианты системных имен для экстра-жирного Нунито */
+        src: local('Nunito ExtraBold'), 
+             local('Nunito-ExtraBold'), 
+             local('Nunito Black'), 
+             local('Nunito-Black'), 
+             local('Nunito');
+        font-weight: normal; /* Обманываем браузер, чтобы он не утолщал его поверх */
+        font-style: normal;
+    }
+	
+	
+@media print, screen {
+  /* Настройка размеров страницы А4 и полей */
+  @page {
+    size: A4;
+    margin: 10mm 10mm 10mm 15mm; /* Левое поле чуть больше под подшивку */
+    margin: 10mm 10mm 10mm 15mm; /* Левое поле чуть больше под подшивку */
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+ 
+    line-height: 1.2;
+    color: #1a1a1a;
+    background: #fff;
+    margin: 6pt;
+    padding: 10pt;
+  }
+
+  /* Заголовки */
+  h1, h2, h3, h4, h5, h6 {
+    color: #111111;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 12pt;
+    page-break-after: avoid; /* Запрещает разрыв страницы СРАЗУ ПОСЛЕ заголовка */
+    break-after: avoid;
+  }
+
+  h1 { font-size: 42pt; font-family: 'Malgun Gothic',  sans-serif !important; border-bottom: 1px solid #eee; padding-bottom: 6pt; }
+  h2 { 
+    counter-increment: heading-counter;
+    /* Возвращаем стандартное отображение, текст больше не сдвинется ни на миллиметр */
+    display: block !important; 
+font-size: 28pt;
+    padding-right: 0;
+    margin-top: 24pt; }
+  h3 { font-size: 22pt; font-family: 'Courier New',  sans-serif !important; 
+    margin-top: 24pt;
+    text-align: center; }
+
+  p {
+    margin-top: 0; 
+    margin-bottom: 0;
+    padding-left: 10pt;
+    padding-right: 50pt;
+    text-align: justify; /* Выравнивание по ширине для книжного вида */
+  }
+
+  /* Списки */
+  ul, ol {
+    margin-top: 0; 
+    margin-bottom: 0;
+    padding-left: 25pt;
+  }
+
+  li {
+    margin-bottom: 0;
+	
+    line-height: 1.3;
+    padding-left: 0;
+    padding-right: 0; 
+  }
+  
+html body li p {
+    font-size: 10pt !important;       /* Размер шрифта в списке */
+	font-family: Georgia,  serif !important; 
+    letter-spacing: 0.44em !important; 
+    line-height: 1.2 !important;      /* Межстрочный интервал внутри пункта */
+    margin-top: 0 !important;         /* Убираем лишние отступы */
+    margin-bottom: 3pt !important;      /* Расстояние МЕЖДУ пунктами списка */
+    padding-left: 0;
+    padding-right: 0;
+}
+  
+html body li em { 
+	font-family: Georgia,  serif !important; 
+    letter-spacing: -0.04em !important; 
+    line-height: 1.2 !important;      /* Межстрочный интервал внутри пункта */
+    margin-top: 0 !important;         /* Убираем лишние отступы */
+    margin-bottom: 3pt !important;      /* Расстояние МЕЖДУ пунктами списка */
+    padding-left: 0;
+    padding-right: 0;
+}
+
+html body li strong {
+    font-weight: bold !important; /* Гарантируем, что он останется жирным */
+    
+    font-family: 'MyLocalNunito', sans-serif !important; 
+    letter-spacing: -0.07em !important; /* Чуть сближаем буквы для красоты */
+    
+    /* Пример кастомных стилей (измените под себя или удалите лишнее): */
+    color: #000000 !important;    /* Цвет текста (можно сделать, например, темно-синим #003366) */
+    background-color: transparent !important; /* Убираем фон, если он наследовался */
+    
+    /* Сюда можно добавить, например, курсив или подчеркивание, если нужно: */
+    /* font-style: italic !important; */
+}
+
+  /* Цитаты */
+  blockquote {
+    margin: 0 0 12pt 0;
+    padding-left: 12pt;
+    border-left: 4px solid #ddd;
+    color: #555;
+    font-style: italic;
+  }
+
+  /* Код */
+  pre, code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; 
+    background-color: #f6f8fa;
+    border-radius: 3px;
+  }
+
+  code {
+    padding: 2pt 4pt;
+  }
+
+  pre {
+    padding: 12pt;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+    border: 1px solid #eaecef;
+  }
+
+  /* Таблицы */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 18pt;
+    page-break-inside: avoid; /* Таблица по возможности не разрывается на куски */
+    break-inside: avoid;
+  }
+
+  th, td {
+    border: 1px solid #dfe2e5;
+    padding: 6pt 10pt;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f6f8fa;
+    font-weight: bold;
+  }
+
+  /* Изображения */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 12pt auto;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Ссылки (скрываем синий цвет при печати) */
+  a {
+    color: #1a1a1a;
+    text-decoration: underline;
+  }
+
+  /* Разрывы страниц для крупных блоков */
+  .page-break {
+    page-break-before: always;
+    break-before: always;
+  }
+}
+/* 1. Инициализируем счетчик для всего тела документа */
+body {
+    counter-reset: heading-counter; 
+}
+
+/* 2. Каждый раз, когда встречается H2, увеличиваем счетчик на 1 */
+h2 {
+    counter-increment: heading-counter;
+}
+
+/* 3. Автоматически подставляем цифру ПЕРЕД текстом заголовка */
+h2::before { 
+    display: inline-block !important;
+    z-index: -1;
+    /* Хак: делаем цифру независимой, чтобы её движение не пинало соседние буквы */
+    position: relative !important; 
+    
+    /* Регулируйте эту цифру в пикселях (px), чтобы опустить номер еще ниже */
+    top: 80px !important; 
+    
+    margin-right: -20px !important;
+    content: counter(heading-counter) " "; /* Будет выводить: "1 ", "2. " */
+    color: #cccccc; /* Можно сделать цифры блеклыми, чтобы не мешали */
+    font-weight: bold;
+    font-size: 100pt;
+}
+html body a, 
+html body a *,
+a {
+    text-decoration: none !important; /* Полностью убирает подчеркивание */
+    
+    /* Дополнительно: если нужно, чтобы ссылки при печати не выделялись синим цветом */
+    color: inherit !important;       /* Ссылка примет цвет родительского текста (черный) */
+}
+
+</style>
+</head>
+<body>
+<div class="ProseMirror">
+${contentHtml}
+</div>
+</body>
+</html>`;
+
+    const blob = new Blob([fullHtml], { type: 'text/html' });
+    const url  = URL.createObjectURL(blob);
+    Object.assign(document.createElement('a'), {
+        href: url,
+        download: 'document.html'
+    }).click();
+    URL.revokeObjectURL(url);
+});
 
         // Bubble menu — позиционируется относительно viewport
         // сам элемент #bubble-menu в тулбаре, перемещаем его в body
