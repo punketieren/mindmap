@@ -125,42 +125,42 @@
 
 ## Слабоумие и Отвага
 
-* **Томми Вудли** — *Окно* [\[ The Window, 1949 \]]()
-* **Антуан Дуанель** — *Четыреста ударов* [\[ Les Quatre Cents Coups, 1959 \]]()
-* ==**Эдди Логгинс** — *«Бумажная луна»* [\[ Paper Moon, 1973 \]](https://www.imdb.com/title/tt0070510)==
-* **Келли Лик** — *«Несносные медведи»* [\[ The Bad News Bears, 1976 \]]()
-* **Майки, Маут, Дата, Чанк** — «Балбесы»  [\[ Goonies, 1985 \]](https://www.imdb.com/title/tt0089218)
-* ==**Горди, Крис, Тедди и Верн** — Останься со мной [\[ Stand by Me, 1986 \]](https://www.imdb.com/title/tt0092005)==
-* **Сэм, Эдгар и Алан**  — «Пропащие ребята»  [\[ Lost Boys, 1987 \]](https://www.imdb.com/title/tt0093437)
-* ==**Саша Григорьев** — [\[ «СЭР (Свобода — это рай)», 1989 \]](https://www.imdb.com/title/tt0098240)==
+* **Томми Вудли** — *«Окно»* [\[ The Window, 1949 \]](https://www.imdb.com/title/tt0042046/)
+* **Антуан Дуанель** — *«Четыреста ударов»* [\[ Les Quatre Cents Coups, 1959 \]](https://www.imdb.com/fr/title/tt0053198/)
+* **Эдди Логгинс** — *«Бумажная луна»* [\[ Paper Moon, 1973 \]](https://www.imdb.com/title/tt0070510)
+* **Келли Лик** — *«Несносные медведи»* [\[ The Bad News Bears, 1976 \]](https://www.imdb.com/title/tt0074174/)
+* **Майки, Маут, Дата, Чанк** — *«Балбесы»* [\[ Goonies, 1985 \]](https://www.imdb.com/title/tt0089218)
+* **Горди, Крис, Тедди и Верн** — *«Останься со мной»* [\[ Stand by Me, 1986 \]](https://www.imdb.com/title/tt0092005)
+* **Сэм, Эдгар и Алан**  — *«Пропащие ребята»*  [\[ Lost Boys, 1987 \]](https://www.imdb.com/title/tt0093437)
+* **Саша Григорьев** — [\[ «СЭР (Свобода — это рай)», 1989 \]](https://www.imdb.com/title/tt0098240)
 * **Кевин Маккаллистер**  —  *«Один дома»* [\[ Home Alone, 1990 \]](https://www.imdb.com/title/tt0099785)
 * **Гарриет** — *«Подкоп в Китай»* [\[ Digging to China, 1997 \]](https://www.imdb.com/title/tt0118980)
-* **Лиам** — *Сладкие шестнадцать* [\[ Sweet Sixteen, 2002 \]]()
-* **Стэнли** — «Клад» [\[ Holes, 2003 \]](https://www.imdb.com/title/tt0311289)
-* **Пьетари** — *Санта на продажу* [\[ Rare Exports: A Christmas Tale, 2010 \]](https://www.imdb.com/title/tt1401143)
-* **Со-ми** — *Человек из ниоткуда* [\[ Ajeossi, 2010 \]](https://www.imdb.com/title/tt1527788)
-* **Бекка и Тайлер** — *Визит* [\[ The Visit, 2015 \]]()
-* ==**Коул** — *Няня* [\[ The Babysitter, 2017 \]]()==
-* **Чэнь Нянь** — *Лучшие дни* [\[ Shaonian de ni, 2019 \]]()
-* ==**Бекки** — *Бекки* [\[ Becky, 2020 \]]()==
-* **Финни и Гвен** — *Черный телефон* [\[ The Black Phone, 2021 \]]()
+* **Лиам** — *«Сладкие шестнадцать»* [\[ Sweet Sixteen, 2002 \]](https://www.imdb.com/title/tt0313670/)
+* **Стэнли** — *«Клад»* [\[ Holes, 2003 \]](https://www.imdb.com/title/tt0311289)
+* **Пьетари** — *«Санта на продажу»* [\[ Rare Exports: A Christmas Tale, 2010 \]](https://www.imdb.com/title/tt1401143)
+* **Со-ми** — *«Человек из ниоткуда»* [\[ Ajeossi, 2010 \]](https://www.imdb.com/title/tt1527788)
+* **Бекка и Тайлер** — *«Визит»* [\[ The Visit, 2015 \]](https://www.imdb.com/title/tt3567288/)
+* **Коул** — *«Няня»* [\[ The Babysitter, 2017 \]](https://www.imdb.com/title/tt4225622/)
+* **Чэнь Нянь** — *«Лучшие дни»* [\[ Shaonian de ni, 2019 \]](https://www.imdb.com/title/tt9586294/)
+* **Бекки** — *«Бекки»* [\[ Becky, 2020 \]](https://www.imdb.com/title/tt10314450/)
+* **Финни и Гвен** — *«Черный телефон»* [\[ The Black Phone, 2021 \]](https://www.imdb.com/title/tt7144666/)
 
-## Призраки, мстительные духи и монстры
+## Призраки и мстительные духи
 
 *Потусторонние сущности, принимающие облик детей*
 
-* **Садако Ямамура** — *«Звонок»* [\[ Ringu, 1998 \]](https://www.imdb.com/title/tt0178868)
 * **Элис** — *«Элис, милая Элис»* [\[ Alice, Sweet Alice, 1976 \]](https://www.imdb.com/title/tt0076150)
-* **Макс** — *«Крампус»* [\[ Krampus, 2015 \]](https://www.imdb.com/title/tt3850590)
+* **Садако Ямамура** — *«Звонок»* [\[ Ringu, 1998 \]](https://www.imdb.com/title/tt0178868)
 * **Тосио** — *«Проклятие»* [\[ Ju-on: The Grudge, 2002 \]](https://www.imdb.com/title/tt0364385)
+* **Макс** — *«Крампус»* [\[ Krampus, 2015 \]](https://www.imdb.com/title/tt3850590)
 
 ## Дети—**Не-дети**
 
 *Деточки, искусно притворяющиеся, скрывающие правду о своей истинной природе.*
 
-* **Эстер** — «Дитя тьмы» [\[ Orphan, 2009 \]](https://www.imdb.com/title/tt1148204)
+* **Эли** — *«Впусти меня»* [\[ Låt den rätte komma in, 2008 \]](https://www.imdb.com/title/tt1139797)
+* **Эстер** — *«Дитя тьмы»* [\[ Orphan, 2009 \]](https://www.imdb.com/title/tt1148204)
 * **Эбигейл** — *«Эбигейл»* [\[ Abigail, 2024 \]](https://www.imdb.com/title/tt27489557)
-* **Эли** — «Впусти меня» [\[ Låt den rätte komma in, 2008 \]](https://www.imdb.com/title/tt1139797)
 
 ## **Одержимые** дети
 
@@ -169,8 +169,8 @@
 * **Майлз и Флора** — *«Невинные»* [\[ The Innocents, 1961 \]](https://www.imdb.com/title/tt0055018)
 * **Риган МакНил** — *«Изгоняющий дьявола»* [\[ The Exorcist, 1973 \]](https://www.imdb.com/title/tt0070047)
 * **Дэмиен Торн** — *«Омен»* [\[ The Omen, 1976 \]](https://www.imdb.com/title/tt0075005)
-* **Боб Бойл** — *«Дом у кладбища»* [\[ Quella villa accanto al cimitero, 1981 \]]()
-* **Гейдж Крид** — «Кладбище домашних животных» [\[ Pet Sematary \]](https://www.imdb.com/title/tt0098084)
+* **Боб Бойл** — *«Дом у кладбища»* [\[ Quella villa accanto al cimitero, 1981 \]](https://www.imdb.com/it/title/tt0082966)
+* **Гейдж Крид** — *«Кладбище домашних животных»* [\[ Pet Sematary, 1989 \]](https://www.imdb.com/title/tt0098084)
 * **Алесса Гиллеспи, Шэрон Да Силва** — *«Сайлент Хилл»* [\[ Silent Hill, 2006 \]](https://www.imdb.com/title/tt0384537)
 * **Мин** — *«Медиум»* [\[ The Medium, 2021 \]](https://www.imdb.com/title/tt13446168)
 
@@ -179,10 +179,10 @@
 *Малолетние монстры, пришельцы и металюди*
 
 * **Чарли Макги** — *«Воспламеняющая взглядом»* [\[ Firestarter, 1984 \]](https://www.imdb.com/title/tt0087262)
-* **Матильда Вормвуд** — «Матильда» [Matilda, 1996 \]](https://www.imdb.com/title/tt0117008)
-* **Джейкоб, Эмма и пр.** — «Дом странных детей Мисс Перегрин» [Miss Peregrine's Home for Peculiar Children 2016 \]](https://www.imdb.com/title/tt1935859/)
-* **Руби** — «Тёмные отражения» [The Darkest Minds, 2018 \]](https://www.imdb.com/title/tt4073790)
-* **Брэндон Брейер** — «Гори, гори ясно» [Brightburn, 2019 \]](https://www.imdb.com/title/tt7752126)
+* **Матильда Вормвуд** — *«Матильда» *[Matilda, 1996 \]](https://www.imdb.com/title/tt0117008)
+* **Джейкоб, Эмма и пр.** — *«Дом странных детей Мисс Перегрин»* [Miss Peregrine's Home for Peculiar Children 2016 \]](https://www.imdb.com/title/tt1935859/)
+* **Руби** — *«Тёмные отражения»* [The Darkest Minds, 2018 \]](https://www.imdb.com/title/tt4073790)
+* **Брэндон Брейер** — *«Гори, гори ясно»* [Brightburn, 2019 \]](https://www.imdb.com/title/tt7752126)
 * **Мэджик, Мираж, Вулфсбейн, Кэннонбол, Санспот** — *«Новые мутанты»* [\[ New Mutants, 2020 \]](https://www.imdb.com/title/tt4682266)
 
 ## Временно вне категорий
