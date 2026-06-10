@@ -179,10 +179,10 @@
 *Малолетние монстры, пришельцы и металюди*
 
 * **Чарли Макги** — *«Воспламеняющая взглядом»* [\[ Firestarter, 1984 \]](https://www.imdb.com/title/tt0087262)
-* **Матильда Вормвуд** — *«Матильда» *[Matilda, 1996 \]](https://www.imdb.com/title/tt0117008)
-* **Джейкоб, Эмма и пр.** — *«Дом странных детей Мисс Перегрин»* [Miss Peregrine's Home for Peculiar Children 2016 \]](https://www.imdb.com/title/tt1935859/)
-* **Руби** — *«Тёмные отражения»* [The Darkest Minds, 2018 \]](https://www.imdb.com/title/tt4073790)
-* **Брэндон Брейер** — *«Гори, гори ясно»* [Brightburn, 2019 \]](https://www.imdb.com/title/tt7752126)
+* **Матильда Вормвуд** — *«Матильда»* [\[ Matilda, 1996 \]](https://www.imdb.com/title/tt0117008)
+* **Джейкоб, Эмма и пр.** — *«Дом странных детей Мисс Перегрин»* [\[ Miss Peregrine's Home for Peculiar Children 2016 \]](https://www.imdb.com/title/tt1935859/)
+* **Руби** — *«Тёмные отражения»* [\[ The Darkest Minds, 2018 \]](https://www.imdb.com/title/tt4073790)
+* **Брэндон Брейер** — *«Гори, гори ясно»* [\[ Brightburn, 2019 \]](https://www.imdb.com/title/tt7752126)
 * **Мэджик, Мираж, Вулфсбейн, Кэннонбол, Санспот** — *«Новые мутанты»* [\[ New Mutants, 2020 \]](https://www.imdb.com/title/tt4682266)
 
 ## Временно вне категорий
